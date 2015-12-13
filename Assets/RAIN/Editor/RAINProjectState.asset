@@ -11,8 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -1591671967, guid: e0781e12b13132b45bf09c20fcd34d12, type: 3}
   m_Name: RAINProjectState
   m_EditorClassIdentifier: 
-  _version: 1
   _updateMetaformRequired: 0
   _lastLoadSaveDirectory: 
-  _lastUpdateCheck: 12/14/2015 02:47:02
-  _lastMetricsUpdate: 12/14/2015 02:46:55
+  _lastUpdateCheck: 
+  _lastMetricsUpdate: 12/14/2015 02:50:03

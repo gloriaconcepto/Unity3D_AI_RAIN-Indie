@@ -1,32 +1,40 @@
-RAIN version 2.1.8.0 Release Notes
---------------------------------
+RAIN version 2.1.11.0 Release Notes
+-----------------------------------
 
-What's New:
------------
-We've added support for our new line of Sentio(tm) Characters.  
-Sentio Characters are pre-rigged, completely ready to go characters that you can drag and drop into your game for instant functionality.  Look for Sentio Characters coming to the Unity Asset Store very soon, and check our website and social media to stay up to date.  http://rivaltheory.com
+New on the Asset Store:
+-----------------------
+The Sentio Character Bundle featuring Necromancer, Darkness Warlord, and Minotaur
+is now available from the Unity Asset Store: http://u3d.as/cks
 
-Changes and bug fixes:
-----------------------
-RAIN menus have been reorganized for simplicity and for support of Sentio Characters.
-AI now shows the Mind in the first tab position in the inspector.
-Fix for BasicNavigator choosing the wrong path waypoint when smoothing paths, which caused AI to skip ahead.
-Fix to path smoothing in general, wasn't working properly when the smoothing changed significantly.
-Fix for terrain collider collector not accounting for height properly on the terrain.
-Added a TransformNavMesh call to move the entire navigation mesh and recalculate bounds appropriately.
-Added RecalculateBounds call to NavMeshPoly in the event that the underlying graph vertices have changed.
-Added a few more functions to the NavMeshPathGraph for adding contours and vertices manually.
-Added public setter for AIRig.AI property.
-Added more support for custom AI editors.
-Added support for sliders in the RAIN editor.
-Revamped the Sensor system:
---Sensors can return Any, All, Best matches.  For built-in sensors, "Best" means nearest object.
---Sensors can be consistent and keep the same object when returning only one object. When the "Consistent" box is checked in the Detect node, the sensor will continue returning the same object until it goes out of range.  If the box is not checked, the matched object may change based on "Best"/nearest or randomly for "Any".
---Sensors have an updated code API.  The previous API has been deprecated but will be supported up to RAIN 2.2.
---Sensors no longer support filters (deprecated).
---Added PhysicalSensor as the base class for most sensors.
-Added list accessors to objects managed by NavigationManager (Waypoints, NavigationTargets, Graphs)
-Fixed undo when creating AI for the first time.
-Added creation helper to RAINScriptableObject (API).
-Added creation helpers to WaypointRig (API).
-Switched metrics ping to 12 hours.
+
+New to RAIN:
+------------
+We've made major changes to the RAIN Navigation System!  Here are some of the new features:
+1) You may now parent RAIN AI components to game objects.
+--- Parenting a NavMesh will cause the NavMesh to obey the transform of the parent object, even if the transform changes at runtime.  You may move an object that has a child NavMesh, and the NavMesh will move along with it.  You can also create Prefabs that include NavMeshes, then place and position those prefabs at runtime.
+--- Parented Waypoints and Navigation Targets will also obey the transform of their parent.
+--- Parented AI will move along surfaces using the Y up of the parent object and will also obey runtime changes to the object transform (sticking to rotating surfaces, etc.)
+
+2) AI can move correctly on objects that are rotated with respect to the world axis.  You may create AI that walk along walls, on the ceiling, etc.  You may need to disable gravity on your AI in some cases and use a custom gravity script.
+
+3) Several pathing methods have been obsoleted and/or updated.  If you need help updating custom code, post your requests on the Rival Theory forums: http://rivaltheory.com/forums/
+
+4) Check the Rival Theory website for example projects demonstrating use of the Navigation Changes: http://rivaltheory.com/community/tutorials/
+
+
+Other changes and bug fixes:
+----------------------------
+Fix for the Mecanim Animator Editor breaking when the Unity 4 version of RAIN is used in Unity 5.
+Fix for several editors when selecting and using handles.
+Fix to Mecanim Motor parameter for TurnBeforeMoveAngle.
+Fix for MecanimAnimator not properly starting/stopping animation states (was always returning running/failure).
+Fix for Visual Sensors not properly checking vertical visibility.
+
+Added OctTree visualization the the NavMeshRig
+Improved height error on the Navigation Mesh
+Changed the RAIN/Unity version warning to be more obvious.
+Changed the editor tool handle behave more consistently between the editors.
+Changed Mecanim Animator to find Animator component in children.
+Changed Mecanim Motor to add AngleToTarget to represent then current angle between the target and the AI, and changed TurnAngle to represent the angle only when the AI is actually rotating.
+Changed BTActions to be direct BTNodes.
+

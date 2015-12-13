@@ -23,5 +23,5 @@ MonoBehaviour:
   _allowAutoUpdateCheck: 1
   _updateFrequencyHours: 24
   _showWelcomeWindow: 1
-  _projectSkin: {fileID: 0}
-  _projectState: {fileID: 11400000, guid: 20d45a41e610a014ab1069c352667e52, type: 2}
+  _displayVersionWarning: 1
+  _projectSkin: {fileID: 11400000, guid: 94aa5f813707fc44ea9d0d95ec00d194, type: 2}
